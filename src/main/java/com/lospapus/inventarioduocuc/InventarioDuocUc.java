@@ -11,6 +11,7 @@ package com.lospapus.inventarioduocuc;
 public class InventarioDuocUc {
 
     public static void main(String[] args) {
+        System.out.println("Hola nmundo");
         
     }
 }
