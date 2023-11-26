@@ -11,7 +11,7 @@ package com.lospapus.vistas;
 public class JPanelModificar extends javax.swing.JPanel {
 
     /**
-     * Creates new form JPanelModificar
+     * Creates new form JPanelAgregar
      */
     public JPanelModificar() {
         initComponents();
@@ -26,35 +26,170 @@ public class JPanelModificar extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
+        labelMNombreProducto = new javax.swing.JLabel();
+        textfieldMNombreProducto = new javax.swing.JTextField();
+        labelMPrecioProducto = new javax.swing.JLabel();
+        textfieldmPrecioProducto = new javax.swing.JTextField();
+        labelMCantidadProducto = new javax.swing.JLabel();
+        textfieldmCantidadProducto = new javax.swing.JTextField();
+        rbtnMBebida = new javax.swing.JRadioButton();
+        rbtnMComida = new javax.swing.JRadioButton();
+        labelMCategoriaProducto = new javax.swing.JLabel();
+        btnModificar = new javax.swing.JToggleButton();
+        labelMIDProducto = new javax.swing.JLabel();
+        listaIDProducto = new javax.swing.JComboBox<>();
 
-        jPanel1.setBackground(new java.awt.Color(255, 0, 0));
+        setPreferredSize(new java.awt.Dimension(560, 500));
+
+        jPanel1.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel1.setPreferredSize(new java.awt.Dimension(570, 500));
+
+        labelMNombreProducto.setForeground(new java.awt.Color(255, 255, 255));
+        labelMNombreProducto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelMNombreProducto.setText("Nombre del Producto");
+
+        textfieldMNombreProducto.setText("jTextField1");
+
+        labelMPrecioProducto.setForeground(new java.awt.Color(255, 255, 255));
+        labelMPrecioProducto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelMPrecioProducto.setText("Precio del Producto");
+
+        textfieldmPrecioProducto.setText("jTextField2");
+
+        labelMCantidadProducto.setForeground(new java.awt.Color(255, 255, 255));
+        labelMCantidadProducto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelMCantidadProducto.setText("Cantidad del Producto");
+
+        textfieldmCantidadProducto.setText("jTextField3");
+
+        buttonGroup1.add(rbtnMBebida);
+        rbtnMBebida.setForeground(new java.awt.Color(255, 255, 255));
+        rbtnMBebida.setText("Bebida");
+        rbtnMBebida.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbtnMBebidaActionPerformed(evt);
+            }
+        });
+
+        buttonGroup1.add(rbtnMComida);
+        rbtnMComida.setForeground(new java.awt.Color(255, 255, 255));
+        rbtnMComida.setText("Comida");
+
+        labelMCategoriaProducto.setForeground(new java.awt.Color(255, 255, 255));
+        labelMCategoriaProducto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelMCategoriaProducto.setText("Categoria del Producto");
+
+        btnModificar.setText("Modificar Producto");
+        btnModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnModificarActionPerformed(evt);
+            }
+        });
+
+        labelMIDProducto.setForeground(new java.awt.Color(255, 255, 255));
+        labelMIDProducto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        labelMIDProducto.setText("Selecciona tu Producto");
+
+        listaIDProducto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(205, 205, 205)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(listaIDProducto, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(rbtnMBebida)
+                                .addGap(18, 18, 18)
+                                .addComponent(rbtnMComida))
+                            .addComponent(labelMCategoriaProducto, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(labelMNombreProducto, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(labelMPrecioProducto, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(labelMCantidadProducto, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(textfieldmCantidadProducto, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(textfieldmPrecioProducto, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(textfieldMNombreProducto)
+                            .addComponent(labelMIDProducto, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(217, 217, 217)
+                        .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(221, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addComponent(labelMIDProducto)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(listaIDProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(13, 13, 13)
+                .addComponent(labelMNombreProducto)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(textfieldMNombreProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(labelMPrecioProducto)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(textfieldmPrecioProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(labelMCantidadProducto)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(textfieldmCantidadProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(labelMCategoriaProducto)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(rbtnMBebida)
+                    .addComponent(rbtnMComida))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnModificar)
+                .addContainerGap(168, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void rbtnMBebidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnMBebidaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rbtnMBebidaActionPerformed
+
+    private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnModificarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JToggleButton btnModificar;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel labelMCantidadProducto;
+    private javax.swing.JLabel labelMCategoriaProducto;
+    private javax.swing.JLabel labelMIDProducto;
+    private javax.swing.JLabel labelMNombreProducto;
+    private javax.swing.JLabel labelMPrecioProducto;
+    private javax.swing.JComboBox<String> listaIDProducto;
+    private javax.swing.JRadioButton rbtnMBebida;
+    private javax.swing.JRadioButton rbtnMComida;
+    private javax.swing.JTextField textfieldMNombreProducto;
+    private javax.swing.JTextField textfieldmCantidadProducto;
+    private javax.swing.JTextField textfieldmPrecioProducto;
     // End of variables declaration//GEN-END:variables
 }

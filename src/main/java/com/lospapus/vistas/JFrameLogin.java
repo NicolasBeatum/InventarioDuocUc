@@ -4,6 +4,8 @@
  */
 package com.lospapus.vistas;
 
+import com.formdev.flatlaf.FlatDarkLaf;
+import com.formdev.flatlaf.FlatLaf;
 import java.awt.Color;
 /**
  *
@@ -11,15 +13,19 @@ import java.awt.Color;
  */
 public class JFrameLogin extends javax.swing.JFrame {
     String user = "admin";
-    String password = "Admin.";
+    String password = "admin";
     /**
      * Creates new form JFrameLogin
      */
     JFrameInventario inventarioProductos = new JFrameInventario();
     public JFrameLogin() {
         initComponents();
+        initStyles();
     }
-
+    private void initStyles(){
+        Usuario.putClientProperty("JTextField.placeholderText", "Ingrese su Usuario");
+        Contrasena.putClientProperty("JTextField.placeholderText", "**********");
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -46,7 +52,6 @@ public class JFrameLogin extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(51, 51, 51));
-        jPanel1.setForeground(new java.awt.Color(0, 0, 0));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel2.setBackground(new java.awt.Color(255, 184, 0));
@@ -54,7 +59,7 @@ public class JFrameLogin extends javax.swing.JFrame {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/duocuclog.png"))); // NOI18N
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel3.setForeground(new java.awt.Color(3, 0, 0));
         jLabel3.setText("Usuario:");
 
         Ingreso.setBackground(new java.awt.Color(0, 0, 0));
@@ -63,11 +68,11 @@ public class JFrameLogin extends javax.swing.JFrame {
 
         jLabel4.setBackground(new java.awt.Color(255, 255, 255));
         jLabel4.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel4.setForeground(new java.awt.Color(3, 0, 0));
         jLabel4.setText("Contraseña: ");
 
         Usuario.setBackground(new java.awt.Color(255, 184, 0));
-        Usuario.setForeground(new java.awt.Color(102, 102, 102));
+        Usuario.setForeground(new java.awt.Color(3, 0, 0));
         Usuario.setBorder(null);
         Usuario.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -80,9 +85,7 @@ public class JFrameLogin extends javax.swing.JFrame {
             }
         });
 
-        BotonIngresa.setBackground(new java.awt.Color(255, 255, 255));
         BotonIngresa.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        BotonIngresa.setForeground(new java.awt.Color(0, 0, 0));
         BotonIngresa.setText("INGRESAR");
         BotonIngresa.setToolTipText("");
         BotonIngresa.addActionListener(new java.awt.event.ActionListener() {
@@ -92,7 +95,7 @@ public class JFrameLogin extends javax.swing.JFrame {
         });
 
         Contrasena.setBackground(new java.awt.Color(255, 184, 0));
-        Contrasena.setForeground(new java.awt.Color(102, 102, 102));
+        Contrasena.setForeground(new java.awt.Color(3, 0, 0));
         Contrasena.setBorder(null);
         Contrasena.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -106,7 +109,7 @@ public class JFrameLogin extends javax.swing.JFrame {
         });
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel5.setForeground(new java.awt.Color(3, 0, 0));
         jLabel5.setText("INICIAR SESION");
         jLabel5.setToolTipText("");
 
@@ -174,7 +177,6 @@ public class JFrameLogin extends javax.swing.JFrame {
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 500));
 
         jPanel3.setBackground(new java.awt.Color(0, 0, 0));
-        jPanel3.setForeground(new java.awt.Color(0, 0, 0));
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -201,6 +203,7 @@ public class JFrameLogin extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void UsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UsuarioActionPerformed
@@ -208,12 +211,12 @@ public class JFrameLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_UsuarioActionPerformed
 
     private void BotonIngresaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonIngresaActionPerformed
-
-        // TODO add your handling code here:
+// TODO add your handling code here:
         if (user.equals(Usuario.getText()) && password.equals(Contrasena.getText())){
             Ingreso.setText("Acceso concedido");
             Ingreso.setForeground(Color.GREEN);
             this.inventarioProductos.setVisible(true);
+            this.dispose();
         }else{
             Ingreso.setText("Acceso denegado");
             Ingreso.setForeground(Color.RED);
@@ -225,28 +228,12 @@ public class JFrameLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_ContrasenaActionPerformed
 
     private void ContrasenaMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ContrasenaMousePressed
-        // TODO add your handling code here:
-        if (String.valueOf(Contrasena.getPassword()).equals("**********")){
-            Contrasena.setText("");
-            Usuario.setForeground(Color.black);
-            
-        }
-        if (Usuario.getText().isEmpty()){
-            Usuario.setText("Ingrese su nombre de usuario");
-            Usuario.setForeground(Color.gray);
-        }
+
     }//GEN-LAST:event_ContrasenaMousePressed
 
     private void UsuarioMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UsuarioMousePressed
         // TODO add your handling code here:
-        if (Usuario.getText().isEmpty()){
-            Usuario.setText("Ingrese su nombre de usuario");
-            Usuario.setForeground(Color.gray);
-        }
-        if (String.valueOf(Contrasena.getPassword()).equals("**********")){
-            Contrasena.setText("");
-            Usuario.setForeground(Color.black);
-        }    
+
     }//GEN-LAST:event_UsuarioMousePressed
 
     /**
@@ -276,7 +263,7 @@ public class JFrameLogin extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
-
+        FlatDarkLaf.setup();
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
