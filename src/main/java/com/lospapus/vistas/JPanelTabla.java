@@ -9,6 +9,8 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -17,7 +19,7 @@ import javax.swing.table.DefaultTableModel;
  * @author nchig
  */
 public class JPanelTabla extends javax.swing.JPanel {
-    
+    private int idBorrar;
     /**
      * Creates new form JPanelAgregar
      */
@@ -25,6 +27,7 @@ public class JPanelTabla extends javax.swing.JPanel {
         initComponents();
     }
     String tabla="producto";
+    DefaultTableModel model=new DefaultTableModel();
     public void mostrar(String tabla){
         String sql="select * from "+tabla;
         Statement st;
@@ -78,7 +81,7 @@ public class JPanelTabla extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         visor = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
+        botonEliminar = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
         refrescarBoton = new javax.swing.JButton();
 
@@ -95,10 +98,15 @@ public class JPanelTabla extends javax.swing.JPanel {
         ));
         jScrollPane2.setViewportView(visor);
 
-        jButton1.setText("Eliminar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        botonEliminar.setText("Eliminar");
+        botonEliminar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                botonEliminarMouseClicked(evt);
+            }
+        });
+        botonEliminar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                botonEliminarActionPerformed(evt);
             }
         });
 
@@ -124,7 +132,7 @@ public class JPanelTabla extends javax.swing.JPanel {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(204, 204, 204)
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(botonEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addContainerGap()
                                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 478, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -143,7 +151,7 @@ public class JPanelTabla extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(33, 33, 33)
-                .addComponent(jButton1)
+                .addComponent(botonEliminar)
                 .addContainerGap(46, Short.MAX_VALUE))
         );
 
@@ -163,18 +171,38 @@ public class JPanelTabla extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void botonEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEliminarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_botonEliminarActionPerformed
 
     private void refrescarBotonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_refrescarBotonMouseClicked
         // TODO add your handling code here:
         mostrar("producto");
     }//GEN-LAST:event_refrescarBotonMouseClicked
 
+    private void botonEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonEliminarMouseClicked
+        // TODO add your handling code here:asdasdasdsad
+        int fila = visor.getSelectedRow();
+        if (fila >= 0) { // Verificar si se seleccionó una fila
+            DefaultTableModel model = (DefaultTableModel) visor.getModel();
+            idBorrar = Integer.parseInt(model.getValueAt(fila, 0).toString());
+            model.removeRow(fila);
+        } else {
+            JOptionPane.showMessageDialog(this, "Por favor, selecciona una fila para eliminar.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        
+        conexionBD eliminarProducto=new conexionBD();
+        try {
+            eliminarProducto.eliminarProducto(idBorrar);
+        }catch (SQLException ex) {
+            Logger.getLogger(JPanelTabla.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }//GEN-LAST:event_botonEliminarMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton botonEliminar;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField jTextField1;
