@@ -2,31 +2,45 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.lospapus.inventarioduocuc;
+package com.lospapus.basededatos;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+
 /**
  *
  * @author hansi
  */
-public class conexionBD {
+public class ConexionBD {
+
     public Connection obtenerConexion() {
         Connection connection = null;
         try {
-            connection = (Connection)DriverManager.getConnection("jdbc:mysql://localhost:3306/productos_bdd", 
-                                                     "root","admin12341");
+            connection = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/productos_bdd",
+                    "root", "admin12341");
             System.out.println("Conexión exitosa");
             
+
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
         }
-        
+
         return connection;
     }
+
+    public boolean verificarConexion() {
+        try (Connection connection = obtenerConexion()) {
+            System.out.println("Conexión exitosa");
+            return true;
+        } catch (SQLException ex) {
+            System.out.println("Error de conexión: " + ex.getMessage());
+            return false;
+        }
+    }
     
-    public void insertarProducto(String nombreProducto, double precioProducto, int cantidadProducto,int tipoProducto) {
+    public void insertarProducto(String nombreProducto, double precioProducto, int cantidadProducto, int tipoProducto) {
         String url = "jdbc:mysql://localhost:3306/productos_bdd";
         String usuario = "root";
         String pass = "admin12341";
@@ -40,7 +54,7 @@ public class conexionBD {
                 preparedStatement.setString(1, nombreProducto);
                 preparedStatement.setDouble(2, precioProducto);
                 preparedStatement.setInt(3, cantidadProducto);
-                preparedStatement.setInt(4,tipoProducto);
+                preparedStatement.setInt(4, tipoProducto);
 
                 // Ejecutar la consulta
                 int filasAfectadas = preparedStatement.executeUpdate();
@@ -55,6 +69,7 @@ public class conexionBD {
             System.out.println("Error al insertar el producto: " + ex.getMessage());
         }
     }
+
     public static void eliminarProducto(int idProducto) throws SQLException {
         String url = "jdbc:mysql://localhost:3306/productos_bdd";
         String usuario = "root";
@@ -76,6 +91,5 @@ public class conexionBD {
             }
         }
     }
-    
-    
+
 }

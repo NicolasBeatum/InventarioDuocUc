@@ -4,6 +4,9 @@
 
 package com.lospapus.inventarioduocuc;
 
+import com.formdev.flatlaf.FlatDarkLaf;
+import com.lospapus.vistas.JFrameLogin;
+
 /**
  *
  * @author nahvv
@@ -11,6 +14,9 @@ package com.lospapus.inventarioduocuc;
 public class InventarioDuocUc {
 
     public static void main(String[] args) {
+        FlatDarkLaf.setup();
+        JFrameLogin login = new JFrameLogin();
+        login.setVisible(true);
         
     }
 }
