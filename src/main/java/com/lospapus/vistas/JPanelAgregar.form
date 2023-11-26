@@ -68,7 +68,7 @@
                           <Component id="textfieldNombreProducto" alignment="1" max="32767" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace pref="198" max="32767" attributes="0"/>
+                  <EmptySpace pref="202" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -112,9 +112,6 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="textfieldNombreProducto">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="jTextField1"/>
-          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="labelPrecioProducto">
           <Properties>
@@ -126,9 +123,6 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="textfieldPrecioProducto">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="jTextField2"/>
-          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="labelCantidadProducto">
           <Properties>
@@ -140,9 +134,6 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="textfieldCantidadProducto">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="jTextField3"/>
-          </Properties>
         </Component>
         <Component class="javax.swing.JRadioButton" name="rbtnBebida">
           <Properties>
@@ -183,6 +174,7 @@
             <Property name="text" type="java.lang.String" value="Subir a la base de datos"/>
           </Properties>
           <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnSubirMouseClicked"/>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnSubirActionPerformed"/>
           </Events>
         </Component>

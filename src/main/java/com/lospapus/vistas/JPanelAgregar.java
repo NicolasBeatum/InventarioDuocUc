@@ -4,6 +4,8 @@
  */
 package com.lospapus.vistas;
 
+import javax.swing.JOptionPane;
+import com.lospapus.inventarioduocuc.conexionBD;
 /**
  *
  * @author nchig
@@ -46,19 +48,13 @@ public class JPanelAgregar extends javax.swing.JPanel {
         labelNombreProducto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labelNombreProducto.setText("Nombre del Producto");
 
-        textfieldNombreProducto.setText("jTextField1");
-
         labelPrecioProducto.setForeground(new java.awt.Color(255, 255, 255));
         labelPrecioProducto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labelPrecioProducto.setText("Precio del Producto");
 
-        textfieldPrecioProducto.setText("jTextField2");
-
         labelCantidadProducto.setForeground(new java.awt.Color(255, 255, 255));
         labelCantidadProducto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labelCantidadProducto.setText("Cantidad del Producto");
-
-        textfieldCantidadProducto.setText("jTextField3");
 
         buttonGroup1.add(rbtnBebida);
         rbtnBebida.setForeground(new java.awt.Color(255, 255, 255));
@@ -78,6 +74,11 @@ public class JPanelAgregar extends javax.swing.JPanel {
         labelCategoriaProducto.setText("Categoria del Producto");
 
         btnSubir.setText("Subir a la base de datos");
+        btnSubir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnSubirMouseClicked(evt);
+            }
+        });
         btnSubir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSubirActionPerformed(evt);
@@ -104,7 +105,7 @@ public class JPanelAgregar extends javax.swing.JPanel {
                         .addComponent(textfieldCantidadProducto)
                         .addComponent(textfieldPrecioProducto)
                         .addComponent(textfieldNombreProducto, javax.swing.GroupLayout.Alignment.TRAILING)))
-                .addContainerGap(198, Short.MAX_VALUE))
+                .addContainerGap(202, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -155,6 +156,22 @@ public class JPanelAgregar extends javax.swing.JPanel {
     private void btnSubirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSubirActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnSubirActionPerformed
+
+    private void btnSubirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSubirMouseClicked
+        // TODO add your handling code here:
+        double preciodouble=Double.parseDouble(this.textfieldPrecioProducto.getText());
+        int cantidadint=Integer.parseInt(this.textfieldCantidadProducto.getText());
+        int opcion=0;
+        if (this.rbtnBebida.isSelected()){
+            opcion=1;
+        }else if(this.rbtnComida.isSelected()){
+            opcion=2;
+        }
+        conexionBD insertarProducto = new conexionBD();
+        insertarProducto.insertarProducto(""+this.textfieldNombreProducto.getText(), preciodouble, cantidadint, opcion);
+        JOptionPane.showMessageDialog(null, "AGREGADO!");
+        
+    }//GEN-LAST:event_btnSubirMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
