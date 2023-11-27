@@ -4,54 +4,31 @@
  */
 package com.lospapus.modelo;
 
+import com.lospapus.basededatos.ConexionBD;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author nahvv
  */
 public abstract class Producto {
-    protected String categoriaProducto;
+    protected int categoriaProducto;
     protected String nombreProducto;
-    protected int precioProducto;
+    protected double precioProducto;
     protected int cantidadProducto;
 
-    public Producto(String categoriaProducto, String nombreProducto, int precioProducto, int cantidadProducto) {
+    public Producto(int categoriaProducto, String nombreProducto, double precioProducto, int cantidadProducto) {
         this.categoriaProducto = categoriaProducto;
         this.nombreProducto = nombreProducto;
         this.precioProducto = precioProducto;
         this.cantidadProducto = cantidadProducto;
     }
 
-    public String getCategoriaProducto() {
-        return categoriaProducto;
-    }
+    public void agregarProducto(String nombre, double precio, int cantidad, int opcion) {
+        ConexionBD insertarProducto = new ConexionBD();
+        insertarProducto.insertarProducto(nombre, precio, cantidad, opcion);
+        JOptionPane.showMessageDialog(null, "AGREGADO!");
 
-    public void setCategoriaProducto(String categoriaProducto) {
-        this.categoriaProducto = categoriaProducto;
     }
-
-    public String getNombreProducto() {
-        return nombreProducto;
-    }
-
-    public void setNombreProducto(String nombreProducto) {
-        this.nombreProducto = nombreProducto;
-    }
-
-    public int getPrecioProducto() {
-        return precioProducto;
-    }
-
-    public void setPrecioProducto(int precioProducto) {
-        this.precioProducto = precioProducto;
-    }
-
-    public int getCantidadProducto() {
-        return cantidadProducto;
-    }
-
-    public void setCantidadProducto(int cantidadProducto) {
-        this.cantidadProducto = cantidadProducto;
-    }
-    
     
 }

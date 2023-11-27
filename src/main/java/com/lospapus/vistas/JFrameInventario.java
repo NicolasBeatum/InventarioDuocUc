@@ -4,6 +4,7 @@
  */
 package com.lospapus.vistas;
 
+import com.lospapus.controlador.ControladorAgregar;
 import java.awt.BorderLayout;
 import java.awt.LayoutManager;
 import javax.swing.JPanel;
@@ -13,28 +14,28 @@ import javax.swing.JPanel;
  * @author nchig
  */
 public class JFrameInventario extends javax.swing.JFrame {
-     
+
+
     /**
      * Creates new form NewJFrame
      */
     public JFrameInventario() {
         initComponents();
         initContenido();
-        
+
     }
     private void  initContenido(){
         MostrarPanel(new JPanelPrincipal());
     }
-     private void MostrarPanel(JPanel p) {
+    private void MostrarPanel(JPanel p) {
         p.setSize(560, 500);
         p.setLocation(0,0);
-        
+
         jPanelRefrescar.removeAll();
         jPanelRefrescar.add(p, BorderLayout.CENTER);
         jPanelRefrescar.revalidate();
         jPanelRefrescar.repaint();
     }
-
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -201,7 +202,7 @@ public class JFrameInventario extends javax.swing.JFrame {
     private void btnInventarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInventarioActionPerformed
         // TODO add your handling code here:
         MostrarPanel(new JPanelTabla());
-        
+
     }//GEN-LAST:event_btnInventarioActionPerformed
 
     /**

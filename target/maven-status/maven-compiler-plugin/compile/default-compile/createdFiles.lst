@@ -23,6 +23,7 @@ com\lospapus\vistas\JPanelModificar$4.class
 com\lospapus\modelo\Producto.class
 com\lospapus\vistas\JFrameInventario$4.class
 com\lospapus\modelo\Bebida.class
+com\lospapus\controlador\ControladorAgregar.class
 com\lospapus\basededatos\ConexionBD.class
 com\lospapus\vistas\JFrameInventario$5.class
 com\lospapus\vistas\JPanelAgregar$4.class

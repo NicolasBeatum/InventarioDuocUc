@@ -10,9 +10,15 @@ package com.lospapus.modelo;
  */
 public class Comida extends Producto {
     
-    public Comida(String categoriaProducto, String nombreProducto, int precioProducto, int cantidadProducto) {
-        super(categoriaProducto, nombreProducto, precioProducto, cantidadProducto);
+    public Comida() {
+        super(0, "", 0.0, 0);
     }
+
+
     
+    @Override
+    public void agregarProducto(String nombre, double precio, int cantidad, int opcion){
+        super.agregarProducto(nombre, precio, cantidad, opcion);
+    }
     
 }
