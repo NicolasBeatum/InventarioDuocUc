@@ -24,7 +24,7 @@ public class conexionBD {
         Connection connection = null;
         try {
             connection = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/productos_bdd",
-                    "root", "admin12341");
+                    "root", "Nico0802.");
             System.out.println("Conexión exitosa");
             
 

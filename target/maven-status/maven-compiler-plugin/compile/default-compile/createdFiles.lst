@@ -14,10 +14,12 @@ com\lospapus\vistas\JFrameLogin.class
 com\lospapus\vistas\JPanelModificar.class
 com\lospapus\controlador\RellenarCombo.class
 com\lospapus\vistas\JFrameInventario$3.class
+com\lospapus\vistas\JFrameInventario$6.class
 com\lospapus\vistas\JPanelAgregar$3.class
 com\lospapus\vistas\JFrameLogin$5.class
 com\lospapus\vistas\JPanelTabla$2.class
 com\lospapus\vistas\JPanelAgregar$1.class
+com\lospapus\vistas\JPanelModificar$6.class
 com\lospapus\vistas\JFrameLogin$3.class
 com\lospapus\inventarioduocuc\InventarioDuocUc.class
 com\lospapus\vistas\JPanelAgregar$6.class
