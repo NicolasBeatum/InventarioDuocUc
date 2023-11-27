@@ -24,7 +24,7 @@ public class conexionBD {
         Connection connection = null;
         try {
             connection = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/productos_bdd",
-                    "root", "Nico0802.");
+                    "root", "admin12341");
             System.out.println("Conexión exitosa");
             
 
@@ -94,6 +94,40 @@ public class conexionBD {
                     System.out.println("No se encontró el producto con el ID proporcionado.");
                 }
             }
+        }
+    }
+    
+    public static void modificarProducto(int idmodificar, String nombreModificar,double preciodouble, int cantidadint,int tipomodificar) {
+        // Parámetros de conexión a la base de datos
+        String url = "jdbc:mysql://localhost:3306/productos_bdd";
+        String usuario = "root";
+        String clave = "admin12341";
+
+        // Consulta SQL para actualizar el nombre del producto
+        String sql = "UPDATE producto SET nombreProducto = ?, precioProducto = ?, cantidadProducto = ?, id_tipoproducto = ? WHERE idproducto = ?";
+
+        try (Connection conexion = DriverManager.getConnection(url, usuario, clave);
+             PreparedStatement statement = conexion.prepareStatement(sql)) {
+
+            // Establecer los parámetros de la consulta
+            statement.setString(1, nombreModificar);
+        statement.setDouble(2, preciodouble);
+        statement.setInt(3, cantidadint);
+        statement.setInt(4, tipomodificar);
+        statement.setInt(5, idmodificar);
+            
+
+            // Ejecutar la consulta
+            int filasAfectadas = statement.executeUpdate();
+
+            if (filasAfectadas > 0) {
+                System.out.println("Producto modificado exitosamente.");
+            } else {
+                System.out.println("No se pudo modificar el producto. Verifica el ID.");
+            }
+
+        } catch (SQLException e) {
+            System.err.println("Error al modificar el producto: " + e.getMessage());
         }
     }
 

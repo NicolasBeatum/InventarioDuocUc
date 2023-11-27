@@ -61,9 +61,9 @@
                           <Group type="103" groupAlignment="1" attributes="0">
                               <Component id="listaProductos" alignment="0" max="32767" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="rbtnMBebida" max="32767" attributes="0"/>
+                                  <Component id="BotonBebida" max="32767" attributes="0"/>
                                   <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
-                                  <Component id="rbtnMComida" max="32767" attributes="0"/>
+                                  <Component id="BotonComida" max="32767" attributes="0"/>
                               </Group>
                               <Component id="labelMCategoriaProducto" alignment="0" max="32767" attributes="0"/>
                               <Component id="labelMNombreProducto" alignment="0" max="32767" attributes="0"/>
@@ -118,8 +118,8 @@
                   <Component id="labelMCategoriaProducto" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="rbtnMBebida" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="rbtnMComida" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="BotonBebida" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="BotonComida" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="botonModificar" min="-2" max="-2" attributes="0"/>
@@ -141,9 +141,6 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="nombreField">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="jTextField1"/>
-          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="labelMPrecioProducto">
           <Properties>
@@ -155,9 +152,6 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="precioField">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="jTextField2"/>
-          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="labelMCantidadProducto">
           <Properties>
@@ -169,11 +163,8 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="cantidadField">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="jTextField3"/>
-          </Properties>
         </Component>
-        <Component class="javax.swing.JRadioButton" name="rbtnMBebida">
+        <Component class="javax.swing.JRadioButton" name="BotonBebida">
           <Properties>
             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
               <ComponentRef name="tipoProductoM"/>
@@ -184,10 +175,10 @@
             <Property name="text" type="java.lang.String" value="Bebida"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rbtnMBebidaActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BotonBebidaActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JRadioButton" name="rbtnMComida">
+        <Component class="javax.swing.JRadioButton" name="BotonComida">
           <Properties>
             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
               <ComponentRef name="tipoProductoM"/>

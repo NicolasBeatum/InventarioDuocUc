@@ -44,8 +44,8 @@ public class JPanelModificar extends javax.swing.JPanel {
         precioField = new javax.swing.JTextField();
         labelMCantidadProducto = new javax.swing.JLabel();
         cantidadField = new javax.swing.JTextField();
-        rbtnMBebida = new javax.swing.JRadioButton();
-        rbtnMComida = new javax.swing.JRadioButton();
+        BotonBebida = new javax.swing.JRadioButton();
+        BotonComida = new javax.swing.JRadioButton();
         labelMCategoriaProducto = new javax.swing.JLabel();
         botonModificar = new javax.swing.JToggleButton();
         labelMIDProducto = new javax.swing.JLabel();
@@ -62,32 +62,26 @@ public class JPanelModificar extends javax.swing.JPanel {
         labelMNombreProducto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labelMNombreProducto.setText("Nombre del Producto");
 
-        nombreField.setText("jTextField1");
-
         labelMPrecioProducto.setForeground(new java.awt.Color(255, 255, 255));
         labelMPrecioProducto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labelMPrecioProducto.setText("Precio del Producto");
-
-        precioField.setText("jTextField2");
 
         labelMCantidadProducto.setForeground(new java.awt.Color(255, 255, 255));
         labelMCantidadProducto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labelMCantidadProducto.setText("Cantidad del Producto");
 
-        cantidadField.setText("jTextField3");
-
-        tipoProductoM.add(rbtnMBebida);
-        rbtnMBebida.setForeground(new java.awt.Color(255, 255, 255));
-        rbtnMBebida.setText("Bebida");
-        rbtnMBebida.addActionListener(new java.awt.event.ActionListener() {
+        tipoProductoM.add(BotonBebida);
+        BotonBebida.setForeground(new java.awt.Color(255, 255, 255));
+        BotonBebida.setText("Bebida");
+        BotonBebida.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rbtnMBebidaActionPerformed(evt);
+                BotonBebidaActionPerformed(evt);
             }
         });
 
-        tipoProductoM.add(rbtnMComida);
-        rbtnMComida.setForeground(new java.awt.Color(255, 255, 255));
-        rbtnMComida.setText("Comida");
+        tipoProductoM.add(BotonComida);
+        BotonComida.setForeground(new java.awt.Color(255, 255, 255));
+        BotonComida.setText("Comida");
 
         labelMCategoriaProducto.setForeground(new java.awt.Color(255, 255, 255));
         labelMCategoriaProducto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -141,9 +135,9 @@ public class JPanelModificar extends javax.swing.JPanel {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(listaProductos, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(rbtnMBebida, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(BotonBebida, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGap(18, 18, 18)
-                                .addComponent(rbtnMComida, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(BotonComida, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addComponent(labelMCategoriaProducto, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(labelMNombreProducto, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(labelMPrecioProducto, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -189,8 +183,8 @@ public class JPanelModificar extends javax.swing.JPanel {
                 .addComponent(labelMCategoriaProducto)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(rbtnMBebida)
-                    .addComponent(rbtnMComida))
+                    .addComponent(BotonBebida)
+                    .addComponent(BotonComida))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(botonModificar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -214,12 +208,28 @@ public class JPanelModificar extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void rbtnMBebidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnMBebidaActionPerformed
+    private void BotonBebidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonBebidaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_rbtnMBebidaActionPerformed
+    }//GEN-LAST:event_BotonBebidaActionPerformed
 
     private void botonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonModificarActionPerformed
         // TODO add your handling code here:
+        String idstr=this.listaProductos.getSelectedItem().toString();
+        int idmodificar = Integer.parseInt(idstr);
+        conexionBD con=new conexionBD();
+        double preciodouble=Double.parseDouble(this.precioField.getText());
+        int cantidadint=Integer.parseInt(this.cantidadField.getText());
+        int tipomodificar = 0;
+        if(BotonBebida.isSelected()){
+            tipomodificar=1;
+        }else if(BotonComida.isSelected()){
+            tipomodificar=3;
+        }else{
+            JOptionPane.showMessageDialog(null, "Seleccione un tipo");
+        }
+        conexionBD.modificarProducto(idmodificar,this.nombreField.getText(),preciodouble,cantidadint,tipomodificar);
+        
+    
     }//GEN-LAST:event_botonModificarActionPerformed
 
     private void listaProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listaProductosActionPerformed
@@ -249,6 +259,8 @@ public class JPanelModificar extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JRadioButton BotonBebida;
+    private javax.swing.JRadioButton BotonComida;
     private javax.swing.JButton Clear;
     private javax.swing.JToggleButton botonModificar;
     private javax.swing.JTextField cantidadField;
@@ -262,8 +274,6 @@ public class JPanelModificar extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> listaProductos;
     private javax.swing.JTextField nombreField;
     private javax.swing.JTextField precioField;
-    private javax.swing.JRadioButton rbtnMBebida;
-    private javax.swing.JRadioButton rbtnMComida;
     private javax.swing.ButtonGroup tipoProductoM;
     // End of variables declaration//GEN-END:variables
 }
