@@ -1,8 +1,10 @@
 com\lospapus\vistas\JFrameLogin$4.class
+com\lospapus\vistas\JPanelModificar$5.class
 com\lospapus\vistas\JPanelTabla$1.class
 com\lospapus\vistas\JPanelAgregar$2.class
 com\lospapus\vistas\JFrameInventario$1.class
 com\lospapus\vistas\JFrameInventario.class
+com\lospapus\basededatos\conexionBD.class
 com\lospapus\vistas\JPanelTabla$3.class
 com\lospapus\vistas\JFrameLogin$6.class
 com\lospapus\vistas\JFrameLogin$2.class
@@ -10,6 +12,7 @@ com\lospapus\vistas\JPanelAgregar$5.class
 com\lospapus\vistas\JPanelModificar$2.class
 com\lospapus\vistas\JFrameLogin.class
 com\lospapus\vistas\JPanelModificar.class
+com\lospapus\controlador\RellenarCombo.class
 com\lospapus\vistas\JFrameInventario$3.class
 com\lospapus\vistas\JPanelAgregar$3.class
 com\lospapus\vistas\JFrameLogin$5.class
@@ -24,7 +27,6 @@ com\lospapus\modelo\Producto.class
 com\lospapus\vistas\JFrameInventario$4.class
 com\lospapus\modelo\Bebida.class
 com\lospapus\controlador\ControladorAgregar.class
-com\lospapus\basededatos\ConexionBD.class
 com\lospapus\vistas\JFrameInventario$5.class
 com\lospapus\vistas\JPanelAgregar$4.class
 com\lospapus\vistas\JFrameLogin$1.class

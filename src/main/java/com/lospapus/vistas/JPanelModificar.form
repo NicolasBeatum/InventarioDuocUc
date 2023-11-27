@@ -26,7 +26,7 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <Component id="jPanel1" pref="561" max="32767" attributes="0"/>
+              <Component id="jPanel1" pref="560" max="32767" attributes="0"/>
               <EmptySpace min="-2" pref="0" max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -59,7 +59,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="205" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="listaIDProducto" alignment="0" max="32767" attributes="0"/>
+                              <Component id="listaProductos" alignment="0" max="32767" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="rbtnMBebida" max="32767" attributes="0"/>
                                   <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
@@ -69,19 +69,21 @@
                               <Component id="labelMNombreProducto" alignment="0" max="32767" attributes="0"/>
                               <Component id="labelMPrecioProducto" alignment="0" max="32767" attributes="0"/>
                               <Component id="labelMCantidadProducto" alignment="0" max="32767" attributes="0"/>
-                              <Component id="textfieldmCantidadProducto" alignment="0" max="32767" attributes="0"/>
-                              <Component id="textfieldmPrecioProducto" alignment="0" max="32767" attributes="0"/>
-                              <Component id="textfieldMNombreProducto" alignment="1" max="32767" attributes="0"/>
+                              <Component id="cantidadField" alignment="0" max="32767" attributes="0"/>
+                              <Component id="precioField" alignment="0" max="32767" attributes="0"/>
+                              <Component id="nombreField" alignment="1" max="32767" attributes="0"/>
                               <Component id="labelMIDProducto" alignment="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="-2" pref="217" max="-2" attributes="0"/>
-                          <Component id="btnModificar" pref="0" max="32767" attributes="0"/>
+                          <Component id="botonModificar" pref="0" max="32767" attributes="0"/>
                           <EmptySpace min="12" pref="12" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace min="-2" pref="212" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
+                  <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="74" max="-2" attributes="0"/>
               </Group>
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="242" max="-2" attributes="0"/>
@@ -96,19 +98,22 @@
                   <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                   <Component id="labelMIDProducto" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="listaIDProducto" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="listaProductos" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                   <Component id="labelMNombreProducto" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="textfieldMNombreProducto" min="-2" max="-2" attributes="0"/>
+                  <Component id="nombreField" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="labelMPrecioProducto" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="textfieldmPrecioProducto" min="-2" max="-2" attributes="0"/>
+                  <Component id="precioField" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="labelMCantidadProducto" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="textfieldmCantidadProducto" min="-2" max="-2" attributes="0"/>
+                  <Component id="cantidadField" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="labelMCategoriaProducto" min="-2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
@@ -117,7 +122,7 @@
                       <Component id="rbtnMComida" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="btnModificar" min="-2" max="-2" attributes="0"/>
+                  <Component id="botonModificar" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="Clear" min="-2" max="-2" attributes="0"/>
                   <EmptySpace pref="133" max="32767" attributes="0"/>
@@ -135,7 +140,7 @@
             <Property name="text" type="java.lang.String" value="Nombre del Producto"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="textfieldMNombreProducto">
+        <Component class="javax.swing.JTextField" name="nombreField">
           <Properties>
             <Property name="text" type="java.lang.String" value="jTextField1"/>
           </Properties>
@@ -149,7 +154,7 @@
             <Property name="text" type="java.lang.String" value="Precio del Producto"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="textfieldmPrecioProducto">
+        <Component class="javax.swing.JTextField" name="precioField">
           <Properties>
             <Property name="text" type="java.lang.String" value="jTextField2"/>
           </Properties>
@@ -163,7 +168,7 @@
             <Property name="text" type="java.lang.String" value="Cantidad del Producto"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="textfieldmCantidadProducto">
+        <Component class="javax.swing.JTextField" name="cantidadField">
           <Properties>
             <Property name="text" type="java.lang.String" value="jTextField3"/>
           </Properties>
@@ -202,12 +207,13 @@
             <Property name="text" type="java.lang.String" value="Categoria del Producto"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JToggleButton" name="btnModificar">
+        <Component class="javax.swing.JToggleButton" name="botonModificar">
           <Properties>
             <Property name="text" type="java.lang.String" value="Modificar Producto"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnModificarActionPerformed"/>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="botonModificarMouseClicked"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="botonModificarActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="labelMIDProducto">
@@ -219,7 +225,7 @@
             <Property name="text" type="java.lang.String" value="Selecciona tu Producto"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JComboBox" name="listaIDProducto">
+        <Component class="javax.swing.JComboBox" name="listaProductos">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="4">
@@ -231,7 +237,7 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="listaIDProductoActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="listaProductosActionPerformed"/>
           </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
@@ -243,6 +249,14 @@
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ClearActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="jButton1">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="jButton1"/>
+          </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton1MouseClicked"/>
           </Events>
         </Component>
       </SubComponents>

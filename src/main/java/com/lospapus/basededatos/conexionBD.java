@@ -8,12 +8,17 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 /**
  *
  * @author hansi
  */
-public class ConexionBD {
+public class conexionBD {
+
+    public static Statement createStatement() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 
     public Connection obtenerConexion() {
         Connection connection = null;

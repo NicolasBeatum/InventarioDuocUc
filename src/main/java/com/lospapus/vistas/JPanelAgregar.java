@@ -5,7 +5,7 @@
 package com.lospapus.vistas;
 
 import javax.swing.JOptionPane;
-import com.lospapus.basededatos.ConexionBD;
+import com.lospapus.basededatos.conexionBD;
 import com.lospapus.controlador.ControladorAgregar;
 import java.awt.event.KeyEvent;
 import javax.swing.ButtonGroup;

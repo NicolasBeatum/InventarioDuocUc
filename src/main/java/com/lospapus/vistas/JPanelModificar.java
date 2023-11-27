@@ -4,6 +4,15 @@
  */
 package com.lospapus.vistas;
 
+import com.lospapus.basededatos.conexionBD;
+import com.lospapus.controlador.RellenarCombo;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author nchig
@@ -16,6 +25,7 @@ public class JPanelModificar extends javax.swing.JPanel {
     public JPanelModificar() {
         initComponents();
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -29,18 +39,19 @@ public class JPanelModificar extends javax.swing.JPanel {
         tipoProductoM = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         labelMNombreProducto = new javax.swing.JLabel();
-        textfieldMNombreProducto = new javax.swing.JTextField();
+        nombreField = new javax.swing.JTextField();
         labelMPrecioProducto = new javax.swing.JLabel();
-        textfieldmPrecioProducto = new javax.swing.JTextField();
+        precioField = new javax.swing.JTextField();
         labelMCantidadProducto = new javax.swing.JLabel();
-        textfieldmCantidadProducto = new javax.swing.JTextField();
+        cantidadField = new javax.swing.JTextField();
         rbtnMBebida = new javax.swing.JRadioButton();
         rbtnMComida = new javax.swing.JRadioButton();
         labelMCategoriaProducto = new javax.swing.JLabel();
-        btnModificar = new javax.swing.JToggleButton();
+        botonModificar = new javax.swing.JToggleButton();
         labelMIDProducto = new javax.swing.JLabel();
-        listaIDProducto = new javax.swing.JComboBox<>();
+        listaProductos = new javax.swing.JComboBox<>();
         Clear = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setPreferredSize(new java.awt.Dimension(560, 500));
 
@@ -51,19 +62,19 @@ public class JPanelModificar extends javax.swing.JPanel {
         labelMNombreProducto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labelMNombreProducto.setText("Nombre del Producto");
 
-        textfieldMNombreProducto.setText("jTextField1");
+        nombreField.setText("jTextField1");
 
         labelMPrecioProducto.setForeground(new java.awt.Color(255, 255, 255));
         labelMPrecioProducto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labelMPrecioProducto.setText("Precio del Producto");
 
-        textfieldmPrecioProducto.setText("jTextField2");
+        precioField.setText("jTextField2");
 
         labelMCantidadProducto.setForeground(new java.awt.Color(255, 255, 255));
         labelMCantidadProducto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labelMCantidadProducto.setText("Cantidad del Producto");
 
-        textfieldmCantidadProducto.setText("jTextField3");
+        cantidadField.setText("jTextField3");
 
         tipoProductoM.add(rbtnMBebida);
         rbtnMBebida.setForeground(new java.awt.Color(255, 255, 255));
@@ -82,10 +93,15 @@ public class JPanelModificar extends javax.swing.JPanel {
         labelMCategoriaProducto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labelMCategoriaProducto.setText("Categoria del Producto");
 
-        btnModificar.setText("Modificar Producto");
-        btnModificar.addActionListener(new java.awt.event.ActionListener() {
+        botonModificar.setText("Modificar Producto");
+        botonModificar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                botonModificarMouseClicked(evt);
+            }
+        });
+        botonModificar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnModificarActionPerformed(evt);
+                botonModificarActionPerformed(evt);
             }
         });
 
@@ -93,10 +109,10 @@ public class JPanelModificar extends javax.swing.JPanel {
         labelMIDProducto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labelMIDProducto.setText("Selecciona tu Producto");
 
-        listaIDProducto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        listaIDProducto.addActionListener(new java.awt.event.ActionListener() {
+        listaProductos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        listaProductos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                listaIDProductoActionPerformed(evt);
+                listaProductosActionPerformed(evt);
             }
         });
 
@@ -104,6 +120,13 @@ public class JPanelModificar extends javax.swing.JPanel {
         Clear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ClearActionPerformed(evt);
+            }
+        });
+
+        jButton1.setText("jButton1");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
             }
         });
 
@@ -116,7 +139,7 @@ public class JPanelModificar extends javax.swing.JPanel {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(205, 205, 205)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(listaIDProducto, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(listaProductos, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                                 .addComponent(rbtnMBebida, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGap(18, 18, 18)
@@ -125,15 +148,17 @@ public class JPanelModificar extends javax.swing.JPanel {
                             .addComponent(labelMNombreProducto, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(labelMPrecioProducto, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(labelMCantidadProducto, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(textfieldmCantidadProducto, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(textfieldmPrecioProducto, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(textfieldMNombreProducto)
+                            .addComponent(cantidadField, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(precioField, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(nombreField)
                             .addComponent(labelMIDProducto, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(217, 217, 217)
-                        .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                        .addComponent(botonModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                         .addGap(12, 12, 12)))
-                .addGap(212, 212, 212))
+                .addGap(63, 63, 63)
+                .addComponent(jButton1)
+                .addGap(74, 74, 74))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(242, 242, 242)
                 .addComponent(Clear)
@@ -145,19 +170,21 @@ public class JPanelModificar extends javax.swing.JPanel {
                 .addGap(23, 23, 23)
                 .addComponent(labelMIDProducto)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(listaIDProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(13, 13, 13)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(listaProductos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1))
+                .addGap(12, 12, 12)
                 .addComponent(labelMNombreProducto)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(textfieldMNombreProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(nombreField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(labelMPrecioProducto)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(textfieldmPrecioProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(precioField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(labelMCantidadProducto)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(textfieldmCantidadProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(cantidadField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(labelMCategoriaProducto)
                 .addGap(18, 18, 18)
@@ -165,7 +192,7 @@ public class JPanelModificar extends javax.swing.JPanel {
                     .addComponent(rbtnMBebida)
                     .addComponent(rbtnMComida))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnModificar)
+                .addComponent(botonModificar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(Clear)
                 .addContainerGap(133, Short.MAX_VALUE))
@@ -176,7 +203,7 @@ public class JPanelModificar extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 561, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 560, Short.MAX_VALUE)
                 .addGap(0, 0, 0))
         );
         layout.setVerticalGroup(
@@ -191,38 +218,52 @@ public class JPanelModificar extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_rbtnMBebidaActionPerformed
 
-    private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
+    private void botonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonModificarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnModificarActionPerformed
+    }//GEN-LAST:event_botonModificarActionPerformed
 
-    private void listaIDProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listaIDProductoActionPerformed
+    private void listaProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listaProductosActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_listaIDProductoActionPerformed
+    }//GEN-LAST:event_listaProductosActionPerformed
 
     private void ClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ClearActionPerformed
         // TODO add your handling code here:
-        textfieldMNombreProducto.setText("");
-        textfieldmPrecioProducto.setText("");
-        textfieldmCantidadProducto.setText("");
+        nombreField.setText("");
+        precioField.setText("");
+        cantidadField.setText("");
         tipoProductoM.clearSelection();
     }//GEN-LAST:event_ClearActionPerformed
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        // TODO add your handling code here:
+        listaProductos.removeAllItems();
+        RellenarCombo re=new RellenarCombo();
+        re.rellenarBox("producto", listaProductos, "idproducto");
+        
+    }//GEN-LAST:event_jButton1MouseClicked
+
+    private void botonModificarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonModificarMouseClicked
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_botonModificarMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Clear;
-    private javax.swing.JToggleButton btnModificar;
+    private javax.swing.JToggleButton botonModificar;
+    private javax.swing.JTextField cantidadField;
+    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel labelMCantidadProducto;
     private javax.swing.JLabel labelMCategoriaProducto;
     private javax.swing.JLabel labelMIDProducto;
     private javax.swing.JLabel labelMNombreProducto;
     private javax.swing.JLabel labelMPrecioProducto;
-    private javax.swing.JComboBox<String> listaIDProducto;
+    private javax.swing.JComboBox<String> listaProductos;
+    private javax.swing.JTextField nombreField;
+    private javax.swing.JTextField precioField;
     private javax.swing.JRadioButton rbtnMBebida;
     private javax.swing.JRadioButton rbtnMComida;
-    private javax.swing.JTextField textfieldMNombreProducto;
-    private javax.swing.JTextField textfieldmCantidadProducto;
-    private javax.swing.JTextField textfieldmPrecioProducto;
     private javax.swing.ButtonGroup tipoProductoM;
     // End of variables declaration//GEN-END:variables
 }

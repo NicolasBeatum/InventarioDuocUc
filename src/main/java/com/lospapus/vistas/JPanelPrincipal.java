@@ -4,7 +4,7 @@
  */
 package com.lospapus.vistas;
 
-import com.lospapus.basededatos.ConexionBD;
+import com.lospapus.basededatos.conexionBD;
 import java.awt.Color;
 
 /**
@@ -22,7 +22,7 @@ public class JPanelPrincipal extends javax.swing.JPanel {
     }
 
         private void VerificarConexion() {
-        ConexionBD conexionBD = new ConexionBD();
+        conexionBD conexionBD = new conexionBD();
         boolean conexionExitosa = conexionBD.verificarConexion(); // Cambiado a un método estático
         if (conexionExitosa) {
             lblEstadoConexion.setText("Conectado");

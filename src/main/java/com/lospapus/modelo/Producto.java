@@ -4,7 +4,7 @@
  */
 package com.lospapus.modelo;
 
-import com.lospapus.basededatos.ConexionBD;
+import com.lospapus.basededatos.conexionBD;
 import javax.swing.JOptionPane;
 
 /**
@@ -25,7 +25,7 @@ public abstract class Producto {
     }
 
     public void agregarProducto(String nombre, double precio, int cantidad, int opcion) {
-        ConexionBD insertarProducto = new ConexionBD();
+        conexionBD insertarProducto = new conexionBD();
         insertarProducto.insertarProducto(nombre, precio, cantidad, opcion);
         JOptionPane.showMessageDialog(null, "AGREGADO!");
 

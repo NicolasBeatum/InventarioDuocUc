@@ -4,7 +4,7 @@
  */
 package com.lospapus.vistas;
 
-import com.lospapus.basededatos.ConexionBD;
+import com.lospapus.basededatos.conexionBD;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -32,7 +32,7 @@ public class JPanelTabla extends javax.swing.JPanel {
     public void mostrar(String tabla){
         String sql="select * from "+tabla;
         Statement st;
-        ConexionBD con=new ConexionBD();
+        conexionBD con=new conexionBD();
         Connection conexion=con.obtenerConexion();
         System.out.println(sql);
         DefaultTableModel model=new DefaultTableModel();
@@ -194,7 +194,7 @@ public class JPanelTabla extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Por favor, selecciona una fila para eliminar.", "Error", JOptionPane.ERROR_MESSAGE);
         }
         
-        ConexionBD eliminarProducto=new ConexionBD();
+        conexionBD eliminarProducto=new conexionBD();
         try {
             eliminarProducto.eliminarProducto(idBorrar);
         }catch (SQLException ex) {
