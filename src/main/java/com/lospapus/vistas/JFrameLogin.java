@@ -86,6 +86,7 @@ public class JFrameLogin extends javax.swing.JFrame {
         });
 
         BotonIngresa.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        BotonIngresa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/controlar.png"))); // NOI18N
         BotonIngresa.setText("INGRESAR");
         BotonIngresa.setToolTipText("");
         BotonIngresa.setBorder(null);
@@ -168,8 +169,8 @@ public class JFrameLogin extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(Ingreso, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(BotonIngresa, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(85, 85, 85))
+                .addComponent(BotonIngresa, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(83, 83, 83))
         );
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 500));

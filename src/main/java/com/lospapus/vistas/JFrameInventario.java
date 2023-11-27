@@ -67,6 +67,7 @@ public class JFrameInventario extends javax.swing.JFrame {
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/duocuclog.png"))); // NOI18N
 
         btnCerrarSesion.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        btnCerrarSesion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/salida-de-emergencia.png"))); // NOI18N
         btnCerrarSesion.setText("Cerrar Sesion");
         btnCerrarSesion.setBorder(null);
         btnCerrarSesion.addActionListener(new java.awt.event.ActionListener() {
@@ -76,7 +77,9 @@ public class JFrameInventario extends javax.swing.JFrame {
         });
 
         btnPrincipal.setBackground(new java.awt.Color(255, 184, 0));
+        btnPrincipal.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnPrincipal.setForeground(new java.awt.Color(1, 0, 0));
+        btnPrincipal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/casa (1).png"))); // NOI18N
         btnPrincipal.setText("Principal");
         btnPrincipal.setBorder(null);
         btnPrincipal.setBorderPainted(false);
@@ -88,7 +91,9 @@ public class JFrameInventario extends javax.swing.JFrame {
         });
 
         btnInventario.setBackground(new java.awt.Color(255, 184, 0));
+        btnInventario.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnInventario.setForeground(new java.awt.Color(1, 0, 0));
+        btnInventario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/inventario.png"))); // NOI18N
         btnInventario.setText("Ver Inventario");
         btnInventario.setBorder(new javax.swing.border.MatteBorder(null));
         btnInventario.setBorderPainted(false);
@@ -100,7 +105,9 @@ public class JFrameInventario extends javax.swing.JFrame {
         });
 
         btnAProducto.setBackground(new java.awt.Color(255, 184, 0));
+        btnAProducto.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnAProducto.setForeground(new java.awt.Color(1, 0, 0));
+        btnAProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/anadir.png"))); // NOI18N
         btnAProducto.setText("Añadir Producto");
         btnAProducto.setBorder(new javax.swing.border.MatteBorder(null));
         btnAProducto.setBorderPainted(false);
@@ -112,7 +119,9 @@ public class JFrameInventario extends javax.swing.JFrame {
         });
 
         btnModProducto.setBackground(new java.awt.Color(255, 184, 0));
+        btnModProducto.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnModProducto.setForeground(new java.awt.Color(1, 0, 0));
+        btnModProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/editar.png"))); // NOI18N
         btnModProducto.setText("Modificar Producto");
         btnModProducto.setBorder(new javax.swing.border.MatteBorder(null));
         btnModProducto.setBorderPainted(false);
@@ -128,21 +137,23 @@ public class JFrameInventario extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(0, 19, Short.MAX_VALUE)
+                .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(14, 14, 14))
-            .addComponent(btnPrincipal, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(btnAProducto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(btnInventario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(btnModProducto, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(btnCerrarSesion, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(btnPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(btnCerrarSesion, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(14, 14, 14)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                 .addComponent(btnPrincipal, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnInventario, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -150,9 +161,9 @@ public class JFrameInventario extends javax.swing.JFrame {
                 .addComponent(btnAProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnModProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 106, Short.MAX_VALUE)
-                .addComponent(btnCerrarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(49, 49, 49))
+                .addGap(61, 61, 61)
+                .addComponent(btnCerrarSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(83, 83, 83))
         );
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 260, 500));
