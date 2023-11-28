@@ -235,7 +235,7 @@ public class JPanelModificar extends javax.swing.JPanel {
         if(BotonBebida.isSelected()){
             tipomodificar=1;
         }else if(BotonComida.isSelected()){
-            tipomodificar=3;
+            tipomodificar=2;
         }else{
             JOptionPane.showMessageDialog(null, "Seleccione un tipo");
         }
