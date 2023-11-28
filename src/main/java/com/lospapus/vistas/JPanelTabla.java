@@ -6,12 +6,15 @@ package com.lospapus.vistas;
 
 import com.lospapus.basededatos.conexionBD;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -19,34 +22,82 @@ import javax.swing.table.DefaultTableModel;
  * @author nchig
  */
 public class JPanelTabla extends javax.swing.JPanel {
+
     private int idBorrar;
+
     /**
      * Creates new form JPanelAgregar
      */
     public JPanelTabla() {
         initComponents();
-        mostrar("producto");
+        initStyles();
+        mostrar(tabla, "");
+        configurarEventos();
     }
-    String tabla="producto";
-    DefaultTableModel model=new DefaultTableModel();
-    public void mostrar(String tabla){
-        String sql="select * from "+tabla;
+private void initStyles(){
+       buscar.putClientProperty("JTextField.placeholderText", "Ingrese a buscar por nombre,id,precio o cantidad");
+        
+    }
+    private void configurarEventos() {
+        // Asociar evento al JTextField para la búsqueda
+        buscar.getDocument().addDocumentListener(new DocumentListener() {
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                filtrar(buscar.getText());
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                filtrar(buscar.getText());
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                filtrar(buscar.getText());
+            }
+        });
+
+        // Asociar evento al botón de refrescar
+        refrescarBoton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mostrar(tabla, ""); // Mostrar todos los registros al hacer clic en refrescar
+            }
+        });
+    }
+
+    public void filtrar(String texto) {
+        mostrar(tabla, texto);
+    }
+
+    String tabla = "producto";
+    DefaultTableModel model = new DefaultTableModel();
+
+    public void mostrar(String tabla, String filtro) {
+        String sql = "SELECT * FROM " + tabla +
+                     " WHERE idProducto LIKE ? OR nombreProducto LIKE ? OR precioProducto LIKE ? OR cantidadProducto LIKE ?";
+
         Statement st;
-        conexionBD con=new conexionBD();
-        Connection conexion=con.obtenerConexion();
-        System.out.println(sql);
-        DefaultTableModel model=new DefaultTableModel();
+        conexionBD con = new conexionBD();
+        Connection conexion = con.obtenerConexion();
+
+        DefaultTableModel model = new DefaultTableModel();
         model.addColumn("ID");
         model.addColumn("Nombre");
         model.addColumn("Precio");
         model.addColumn("Cantidad");
         model.addColumn("Tipo");
         visor.setModel(model);
-        
-        String[] datos=new String[5];
+
+        String[] datos = new String[5];
         try {
-            st = conexion.createStatement();
-            ResultSet rs = st.executeQuery(sql);
+            PreparedStatement preparedStatement = conexion.prepareStatement(sql);
+            // Establecer el filtro para las columnas idProducto, nombreProducto, precioProducto y cantidadProducto
+            preparedStatement.setString(1, "%" + filtro + "%");
+            preparedStatement.setString(2, "%" + filtro + "%");
+            preparedStatement.setString(3, "%" + filtro + "%");
+            preparedStatement.setString(4, "%" + filtro + "%");
+
+            ResultSet rs = preparedStatement.executeQuery();
             while (rs.next()) {
                 datos[0] = rs.getString(1);
                 datos[1] = rs.getString(2);
@@ -60,15 +111,14 @@ public class JPanelTabla extends javax.swing.JPanel {
                 } else {
                     // Manejar otros casos si es necesario
                     datos[4] = tipoProducto;
-    }
+                }
                 model.addRow(datos);
             }
-                
-        }catch(SQLException e){
-                    JOptionPane.showMessageDialog(null, "ERROR"+e.toString());
-                    }
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "ERROR" + e.toString());
+            System.out.println(sql); // Imprimir la consulta SQL en caso de error
         }
-
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -83,8 +133,10 @@ public class JPanelTabla extends javax.swing.JPanel {
         jScrollPane2 = new javax.swing.JScrollPane();
         visor = new javax.swing.JTable();
         botonEliminar = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
+        buscar = new javax.swing.JTextField();
         refrescarBoton = new javax.swing.JButton();
+        jComida = new javax.swing.JCheckBox();
+        jBebida = new javax.swing.JCheckBox();
 
         jPanel1.setBackground(new java.awt.Color(0, 0, 0));
         jPanel1.setPreferredSize(new java.awt.Dimension(560, 500));
@@ -111,7 +163,11 @@ public class JPanelTabla extends javax.swing.JPanel {
             }
         });
 
-        jTextField1.setText("Buscar");
+        buscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buscarActionPerformed(evt);
+            }
+        });
 
         refrescarBoton.setText("O");
         refrescarBoton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -124,6 +180,17 @@ public class JPanelTabla extends javax.swing.JPanel {
                 refrescarBotonActionPerformed(evt);
             }
         });
+
+        jComida.setForeground(new java.awt.Color(255, 255, 255));
+        jComida.setText("Comida");
+        jComida.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComidaActionPerformed(evt);
+            }
+        });
+
+        jBebida.setForeground(new java.awt.Color(255, 255, 255));
+        jBebida.setText("Bebida");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -140,18 +207,28 @@ public class JPanelTabla extends javax.swing.JPanel {
                         .addGap(212, 212, 212))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jTextField1)
+                        .addComponent(buscar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(refrescarBoton, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(6, 6, 6)))
                 .addContainerGap())
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jComida)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jBebida)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(61, 61, 61)
+                .addGap(29, 29, 29)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jComida)
+                    .addComponent(jBebida))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(buscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(refrescarBoton, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 302, Short.MAX_VALUE)
@@ -180,7 +257,7 @@ public class JPanelTabla extends javax.swing.JPanel {
 
     private void refrescarBotonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_refrescarBotonMouseClicked
         // TODO add your handling code here:
-        mostrar("producto");
+        mostrar(tabla, "");
     }//GEN-LAST:event_refrescarBotonMouseClicked
 
     private void botonEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonEliminarMouseClicked
@@ -193,26 +270,36 @@ public class JPanelTabla extends javax.swing.JPanel {
         } else {
             JOptionPane.showMessageDialog(this, "Por favor, selecciona una fila para eliminar.", "Error", JOptionPane.ERROR_MESSAGE);
         }
-        
-        conexionBD eliminarProducto=new conexionBD();
+
+        conexionBD eliminarProducto = new conexionBD();
         try {
             eliminarProducto.eliminarProducto(idBorrar);
-        }catch (SQLException ex) {
+        } catch (SQLException ex) {
             Logger.getLogger(JPanelTabla.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
     }//GEN-LAST:event_botonEliminarMouseClicked
 
     private void refrescarBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refrescarBotonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_refrescarBotonActionPerformed
 
+    private void buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_buscarActionPerformed
+
+    private void jComidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComidaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComidaActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botonEliminar;
+    private javax.swing.JTextField buscar;
+    private javax.swing.JCheckBox jBebida;
+    private javax.swing.JCheckBox jComida;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JButton refrescarBoton;
     private javax.swing.JTable visor;
     // End of variables declaration//GEN-END:variables
