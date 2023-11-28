@@ -26,7 +26,7 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <Component id="jPanel1" pref="560" max="32767" attributes="0"/>
+              <Component id="jPanel1" pref="561" max="32767" attributes="0"/>
               <EmptySpace min="-2" pref="0" max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -61,9 +61,9 @@
                           <Group type="103" groupAlignment="1" attributes="0">
                               <Component id="listaProductos" alignment="0" max="32767" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="BotonBebida" max="32767" attributes="0"/>
+                                  <Component id="BotonBebida" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
-                                  <Component id="BotonComida" max="32767" attributes="0"/>
+                                  <Component id="BotonComida" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Component id="labelMCategoriaProducto" alignment="0" max="32767" attributes="0"/>
                               <Component id="labelMNombreProducto" alignment="0" max="32767" attributes="0"/>
@@ -81,14 +81,12 @@
                           <EmptySpace min="12" pref="12" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace min="-2" pref="63" max="-2" attributes="0"/>
-                  <Component id="jButton1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="74" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="212" max="-2" attributes="0"/>
               </Group>
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="242" max="-2" attributes="0"/>
-                  <Component id="Clear" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="51" max="32767" attributes="0"/>
+                  <Component id="Clear" pref="0" max="32767" attributes="0"/>
+                  <EmptySpace min="-2" pref="247" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -98,11 +96,8 @@
                   <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                   <Component id="labelMIDProducto" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="listaProductos" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                  <Component id="listaProductos" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
                   <Component id="labelMNombreProducto" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="nombreField" min="-2" max="-2" attributes="0"/>
@@ -152,6 +147,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="precioField">
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="precioFieldKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="labelMCantidadProducto">
           <Properties>
@@ -163,6 +161,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="cantidadField">
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="cantidadFieldKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JRadioButton" name="BotonBebida">
           <Properties>
@@ -240,14 +241,6 @@
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ClearActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JButton" name="jButton1">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="jButton1"/>
-          </Properties>
-          <Events>
-            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButton1MouseClicked"/>
           </Events>
         </Component>
       </SubComponents>
