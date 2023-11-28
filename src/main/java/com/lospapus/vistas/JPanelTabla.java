@@ -169,6 +169,7 @@ private void initStyles(){
             }
         });
 
+        refrescarBoton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gira-a-la-derecha (1).png"))); // NOI18N
         refrescarBoton.setText("O");
         refrescarBoton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
