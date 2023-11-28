@@ -25,7 +25,7 @@ public class conexionBD {
         try {
             connection = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/productos_bdd",
                     "root", "admin12341");
-            System.out.println("Conexión exitosa");
+            //System.out.println("Conexión exitosa");
             
 
         } catch (SQLException ex) {
@@ -37,7 +37,7 @@ public class conexionBD {
 
     public boolean verificarConexion() {
         try (Connection connection = obtenerConexion()) {
-            System.out.println("Conexión exitosa");
+           // System.out.println("Conexión exitosa");
             return true;
         } catch (SQLException ex) {
             System.out.println("Error de conexión: " + ex.getMessage());

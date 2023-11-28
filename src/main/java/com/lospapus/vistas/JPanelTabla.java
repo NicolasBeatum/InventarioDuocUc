@@ -182,8 +182,9 @@ private String traducirTipoProducto(int tipoProducto) {
         botonEliminar = new javax.swing.JButton();
         buscar = new javax.swing.JTextField();
         refrescarBoton = new javax.swing.JButton();
-        BotonComida = new javax.swing.JCheckBox();
-        botonBebida = new javax.swing.JCheckBox();
+        listarComida = new javax.swing.JButton();
+        listarBebida = new javax.swing.JButton();
+        clear = new javax.swing.JToggleButton();
 
         jPanel1.setBackground(new java.awt.Color(0, 0, 0));
         jPanel1.setPreferredSize(new java.awt.Dimension(560, 500));
@@ -229,19 +230,24 @@ private String traducirTipoProducto(int tipoProducto) {
             }
         });
 
-        BotonComida.setForeground(new java.awt.Color(255, 255, 255));
-        BotonComida.setText("Comida");
-        BotonComida.addActionListener(new java.awt.event.ActionListener() {
+        listarComida.setText("Listar por Comida");
+        listarComida.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BotonComidaActionPerformed(evt);
+                listarComidaActionPerformed(evt);
             }
         });
 
-        botonBebida.setForeground(new java.awt.Color(255, 255, 255));
-        botonBebida.setText("Bebida");
-        botonBebida.addActionListener(new java.awt.event.ActionListener() {
+        listarBebida.setText("Listar por Bebida");
+        listarBebida.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonBebidaActionPerformed(evt);
+                listarBebidaActionPerformed(evt);
+            }
+        });
+
+        clear.setText("Limpiar");
+        clear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                clearActionPerformed(evt);
             }
         });
 
@@ -267,24 +273,27 @@ private String traducirTipoProducto(int tipoProducto) {
                 .addContainerGap())
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(BotonComida)
+                .addComponent(listarComida)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(listarBebida)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(botonBebida)
+                .addComponent(clear)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(29, 29, 29)
+                .addGap(28, 28, 28)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(BotonComida)
-                    .addComponent(botonBebida))
+                    .addComponent(listarComida)
+                    .addComponent(listarBebida)
+                    .addComponent(clear))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(buscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(refrescarBoton, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 302, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
                 .addGap(33, 33, 33)
                 .addComponent(botonEliminar)
                 .addGap(46, 46, 46))
@@ -341,24 +350,31 @@ private String traducirTipoProducto(int tipoProducto) {
         // TODO add your handling code here:
     }//GEN-LAST:event_buscarActionPerformed
 
-    private void BotonComidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonComidaActionPerformed
+    private void listarComidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listarComidaActionPerformed
         // TODO add your handling code here:
-        this.sortearTipo(2);
-    }//GEN-LAST:event_BotonComidaActionPerformed
+         this.sortearTipo(2);
+    }//GEN-LAST:event_listarComidaActionPerformed
 
-    private void botonBebidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBebidaActionPerformed
+    private void listarBebidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listarBebidaActionPerformed
         // TODO add your handling code here:
         this.sortearTipo(1);
-    }//GEN-LAST:event_botonBebidaActionPerformed
+    }//GEN-LAST:event_listarBebidaActionPerformed
+
+    private void clearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearActionPerformed
+        // TODO add your handling code here:
+         mostrar(tabla, "");
+         buscar.setText("");
+    }//GEN-LAST:event_clearActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JCheckBox BotonComida;
-    private javax.swing.JCheckBox botonBebida;
     private javax.swing.JButton botonEliminar;
     private javax.swing.JTextField buscar;
+    private javax.swing.JToggleButton clear;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JButton listarBebida;
+    private javax.swing.JButton listarComida;
     private javax.swing.JButton refrescarBoton;
     private javax.swing.JTable visor;
     // End of variables declaration//GEN-END:variables

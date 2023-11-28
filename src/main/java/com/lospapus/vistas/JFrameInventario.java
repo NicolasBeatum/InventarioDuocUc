@@ -69,6 +69,7 @@ public class JFrameInventario extends javax.swing.JFrame {
         btnCerrarSesion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/salida-de-emergencia.png"))); // NOI18N
         btnCerrarSesion.setText("Cerrar Sesion");
         btnCerrarSesion.setBorder(null);
+        btnCerrarSesion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnCerrarSesion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCerrarSesionActionPerformed(evt);
@@ -76,13 +77,13 @@ public class JFrameInventario extends javax.swing.JFrame {
         });
 
         btnPrincipal.setBackground(new java.awt.Color(255, 184, 0));
-        btnPrincipal.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnPrincipal.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnPrincipal.setForeground(new java.awt.Color(1, 0, 0));
         btnPrincipal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/casa (1).png"))); // NOI18N
         btnPrincipal.setText("Principal");
         btnPrincipal.setBorder(null);
         btnPrincipal.setBorderPainted(false);
-        btnPrincipal.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnPrincipal.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnPrincipal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPrincipalActionPerformed(evt);
@@ -90,13 +91,13 @@ public class JFrameInventario extends javax.swing.JFrame {
         });
 
         btnInventario.setBackground(new java.awt.Color(255, 184, 0));
-        btnInventario.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnInventario.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnInventario.setForeground(new java.awt.Color(1, 0, 0));
         btnInventario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/inventario.png"))); // NOI18N
         btnInventario.setText("Ver Inventario");
         btnInventario.setBorder(new javax.swing.border.MatteBorder(null));
         btnInventario.setBorderPainted(false);
-        btnInventario.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnInventario.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnInventario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnInventarioActionPerformed(evt);
@@ -104,13 +105,13 @@ public class JFrameInventario extends javax.swing.JFrame {
         });
 
         btnAProducto.setBackground(new java.awt.Color(255, 184, 0));
-        btnAProducto.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnAProducto.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnAProducto.setForeground(new java.awt.Color(1, 0, 0));
         btnAProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/anadir.png"))); // NOI18N
         btnAProducto.setText("Añadir Producto");
         btnAProducto.setBorder(new javax.swing.border.MatteBorder(null));
         btnAProducto.setBorderPainted(false);
-        btnAProducto.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnAProducto.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnAProducto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAProductoActionPerformed(evt);
@@ -118,13 +119,13 @@ public class JFrameInventario extends javax.swing.JFrame {
         });
 
         btnModProducto.setBackground(new java.awt.Color(255, 184, 0));
-        btnModProducto.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        btnModProducto.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnModProducto.setForeground(new java.awt.Color(1, 0, 0));
         btnModProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/editar.png"))); // NOI18N
         btnModProducto.setText("Modificar Producto");
         btnModProducto.setBorder(new javax.swing.border.MatteBorder(null));
         btnModProducto.setBorderPainted(false);
-        btnModProducto.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        btnModProducto.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         btnModProducto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnModProductoActionPerformed(evt);
