@@ -71,6 +71,53 @@ private void initStyles(){
 
     String tabla = "producto";
     DefaultTableModel model = new DefaultTableModel();
+    
+    public void sortearTipo(int tipo) {
+    String sql = "SELECT * FROM " + tabla + " WHERE id_tipoproducto = ?";
+    conexionBD con = new conexionBD();
+    
+    try (Connection conexion = con.obtenerConexion();
+         PreparedStatement statement = conexion.prepareStatement(sql)) {
+
+        // Establecer el tipo como parámetro
+        statement.setInt(1, tipo);
+
+        // Ejecutar la consulta
+        ResultSet resultSet = statement.executeQuery();
+
+        DefaultTableModel model = new DefaultTableModel();
+        model.addColumn("ID");
+        model.addColumn("Nombre");
+        model.addColumn("Precio");
+        model.addColumn("Cantidad");
+        model.addColumn("Tipo");
+
+        // Llenar el modelo con los resultados de la consulta
+        while (resultSet.next()) {
+            Object[] row = new Object[5];
+            row[0] = resultSet.getInt("idproducto");
+            row[1] = resultSet.getString("nombreProducto");
+            row[2] = resultSet.getInt("precioProducto");
+            row[3] = resultSet.getInt("cantidadProducto");
+
+            int tipoProducto = resultSet.getInt("id_tipoproducto");
+            row[4] = traducirTipoProducto(tipoProducto);
+
+            model.addRow(row);
+        }
+
+        // Configurar el modelo en la tabla
+        visor.setModel(model);
+
+    } catch (SQLException e) {
+        System.err.println("Error al filtrar por tipo: " + e.getMessage());
+    }
+}
+
+private String traducirTipoProducto(int tipoProducto) {
+    // Traduce el tipo de producto a "Bebida" o "Comida"
+    return (tipoProducto == 1) ? "Bebida" : ((tipoProducto == 2) ? "Comida" : String.valueOf(tipoProducto));
+}
 
     public void mostrar(String tabla, String filtro) {
         String sql = "SELECT * FROM " + tabla +
@@ -135,8 +182,8 @@ private void initStyles(){
         botonEliminar = new javax.swing.JButton();
         buscar = new javax.swing.JTextField();
         refrescarBoton = new javax.swing.JButton();
-        jComida = new javax.swing.JCheckBox();
-        jBebida = new javax.swing.JCheckBox();
+        BotonComida = new javax.swing.JCheckBox();
+        botonBebida = new javax.swing.JCheckBox();
 
         jPanel1.setBackground(new java.awt.Color(0, 0, 0));
         jPanel1.setPreferredSize(new java.awt.Dimension(560, 500));
@@ -182,16 +229,21 @@ private void initStyles(){
             }
         });
 
-        jComida.setForeground(new java.awt.Color(255, 255, 255));
-        jComida.setText("Comida");
-        jComida.addActionListener(new java.awt.event.ActionListener() {
+        BotonComida.setForeground(new java.awt.Color(255, 255, 255));
+        BotonComida.setText("Comida");
+        BotonComida.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComidaActionPerformed(evt);
+                BotonComidaActionPerformed(evt);
             }
         });
 
-        jBebida.setForeground(new java.awt.Color(255, 255, 255));
-        jBebida.setText("Bebida");
+        botonBebida.setForeground(new java.awt.Color(255, 255, 255));
+        botonBebida.setText("Bebida");
+        botonBebida.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonBebidaActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -215,9 +267,9 @@ private void initStyles(){
                 .addContainerGap())
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jComida)
+                .addComponent(BotonComida)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jBebida)
+                .addComponent(botonBebida)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -225,8 +277,8 @@ private void initStyles(){
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(29, 29, 29)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComida)
-                    .addComponent(jBebida))
+                    .addComponent(BotonComida)
+                    .addComponent(botonBebida))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(buscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -289,16 +341,22 @@ private void initStyles(){
         // TODO add your handling code here:
     }//GEN-LAST:event_buscarActionPerformed
 
-    private void jComidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComidaActionPerformed
+    private void BotonComidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonComidaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComidaActionPerformed
+        this.sortearTipo(2);
+    }//GEN-LAST:event_BotonComidaActionPerformed
+
+    private void botonBebidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonBebidaActionPerformed
+        // TODO add your handling code here:
+        this.sortearTipo(1);
+    }//GEN-LAST:event_botonBebidaActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JCheckBox BotonComida;
+    private javax.swing.JCheckBox botonBebida;
     private javax.swing.JButton botonEliminar;
     private javax.swing.JTextField buscar;
-    private javax.swing.JCheckBox jBebida;
-    private javax.swing.JCheckBox jComida;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JButton refrescarBoton;

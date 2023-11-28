@@ -23,6 +23,7 @@ com\lospapus\vistas\JFrameInventario$4.class
 com\lospapus\controlador\ControladorAgregar.class
 com\lospapus\vistas\JPanelTabla.class
 com\lospapus\vistas\JPanelModificar$3.class
+com\lospapus\vistas\JPanelTabla$9.class
 com\lospapus\vistas\JFrameLogin$4.class
 com\lospapus\vistas\JPanelModificar$5.class
 com\lospapus\vistas\JFrameInventario$1.class
